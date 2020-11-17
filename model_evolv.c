@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include /* Please include "Mersenne Twister" here: a randum number generator  */
-/* If not, please use your random number generator */
+/* If not, please use your own random number generator and change the corresponding areas */
 
 #define yt 0.75  /* expression threshold */
 #define bt pow(10.0,1.5)  /* expression sensitivity */
@@ -17,9 +17,9 @@
 #define Ni 5    /* number of input-gene  */
 #define Nt 5    /* number of target-genes */
 #define Nm 90   /* number of middle-genes */
-#define NUM (Ni+Nm+Nt)  /* total number of genes in a network*/
+#define NUM (Ni+Nm+Nt)  /* total number of genes in a network */
 
-#define LpG 100   /* total number of generations*/
+#define LpG 100   /* total number of generations */
 #define TIME 100  /* time for a generation */
 #define Sfin 5.0  /* amplitude of external signals */
 
@@ -29,17 +29,17 @@
 int main(int argc, char **argv)
 {
   int i,k,l,n,m,j,lp,iv,li,tmpint;
-  int Npar[SYS],Pcpl[(int)NUM][(int)NUM];
+  int Npar[SYS],Pcpl[NUM][NUM];
 
-  double x[(int)NUM],px[(int)NUM],y[(int)NUM],cpl[(int)NUM][(int)NUM],Sext;
+  double x[NUM],px[NUM],y[NUM],cpl[NUM][NUM],Sext;
   double Prp,Prm,Pmt,tmp;
-  double fit[Lni],tfit[SYS],Fpar[SYS],fmax[(int)NUM],var[(int)NUM],uini[(int)NUM];
-  double hh[KK],ku1[(int)NUM],ku2[(int)NUM],Noi[(int)NUM];
+  double fit[Lni],tfit[SYS],Fpar[SYS],fmax[NUM],var[NUM],uini[NUM];
+  double hh[KK],ku1[NUM],ku2[NUM],Noi[NUM];
   
   FILE *file00,*file01,*fop;
   char str00[200],str01[200],strop[200];
 
-  unsigned long init[4]={0x152, 0x364, 0x526, 0x413}, length=4;
+  unsigned long init[4]={0x152, 0x364, 0x526, 0x413}, length=4; /* initialization of "Mersenne Twister" */
   init_by_array(init, length);
   
 
